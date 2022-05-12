@@ -2,12 +2,10 @@ package com.lab3.universitycoins.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
 
-import com.lab3.universitycoins.model.Student;
+import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.repository.StudentRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +39,7 @@ public class StudentController {
 
     @PostMapping
     public boolean insert(@RequestBody Student student) {
-        if (students.existsByCpf(student.getCpf()))
+        if (students.existsByCpf(student.getCpf()) || students.existsByEmail(student.getEmail()))
             return false;
         students.save(student);
         return true;

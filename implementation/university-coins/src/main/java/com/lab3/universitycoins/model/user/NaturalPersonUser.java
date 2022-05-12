@@ -1,4 +1,4 @@
-package com.lab3.universitycoins.model;
+package com.lab3.universitycoins.model.user;
 
 import javax.persistence.MappedSuperclass;
 

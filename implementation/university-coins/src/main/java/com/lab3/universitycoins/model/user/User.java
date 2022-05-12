@@ -1,12 +1,19 @@
-package com.lab3.universitycoins.model;
+package com.lab3.universitycoins.model.user;
 
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
-@MappedSuperclass
-public abstract class User {
+@Table(name = "users")
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name = "User_Type")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +35,18 @@ public abstract class User {
         this.senha = senha;
     }
 
+    public static User adm() {
+        User adm = new User("admin", "admin@admin.com", "admin");
+        adm.setId(-1L);
+        return adm;
+    }
+
     public Long getId() {
         return id;
+    }
+
+    private void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
