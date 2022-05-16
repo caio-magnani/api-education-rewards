@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.repository.StudentRepository;
+import com.lab3.universitycoins.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,8 @@ public class StudentController {
 
     @Autowired
     private StudentRepository students;
+    @Autowired
+    private UserRepository users;
 
     @GetMapping
     public ArrayList<Student> getAllStudents() {
@@ -27,27 +30,16 @@ public class StudentController {
 
     }
 
-    @GetMapping(value = "/{id}")
-    public Student getStudent(@PathVariable Long id) {
-        try {
-            return this.students.findById(id).get();
-        } catch (Exception e) {
-            return new Student();
-        }
-
+    @PostMapping("/update")
+    public void update(@RequestBody Student student) {
+        students.save(student);
     }
 
     @PostMapping
     public boolean insert(@RequestBody Student student) {
-        if (students.existsByCpf(student.getCpf()) || students.existsByEmail(student.getEmail()))
+        if (users.existsByCpf(student.getCpf()) || users.existsByEmail(student.getEmail()))
             return false;
         students.save(student);
         return true;
-    }
-
-    @PostMapping(value = "/login")
-    public boolean login(@RequestBody Student student) {
-        Student savedStudent = students.findByEmail(student.getEmail());
-        return student.login(savedStudent.getEmail(), savedStudent.getSenha());
     }
 }

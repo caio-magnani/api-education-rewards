@@ -7,9 +7,15 @@ import java.util.ArrayList;
 
 import com.lab3.universitycoins.model.user.User;
 import com.lab3.universitycoins.repository.UserRepository;
+import com.lab3.universitycoins.repository.StudentRepository;
+import com.lab3.universitycoins.repository.TeacherRepository;
+import com.lab3.universitycoins.repository.InstitutionRepository;
+import com.lab3.universitycoins.repository.PartnerRepository;
+import com.lab3.universitycoins.repository.SuportRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -19,6 +25,16 @@ public class UserController {
 
     @Autowired
     private UserRepository users;
+    @Autowired
+    StudentRepository students;
+    @Autowired
+    TeacherRepository teachers;
+    @Autowired
+    PartnerRepository partners;
+    @Autowired
+    InstitutionRepository institutions;
+    @Autowired
+    SuportRepository suports;
 
     @GetMapping
     public ArrayList<User> getAllUsers() {
@@ -27,10 +43,32 @@ public class UserController {
     }
 
     @PostMapping(value = "/login")
-    public String login(@RequestBody User user) {
+    public User login(@RequestBody User user) {
         User userSaved = users.findByEmail(user.getEmail());
-        return (userSaved.login(user.getEmail(), user.getSenha())) ? users.userTypeByEmail(user.getEmail())
-                : "null";
+        if (!userSaved.login(user.getEmail(), user.getPassword())) {
+            return null;
+        }
+        switch (userSaved.getType()) {
+            case "Student":
+                return students.findById(userSaved.getId()).get();
+            case "Teacher":
+                return teachers.findById(userSaved.getId()).get();
+            case "Partner":
+                return partners.findById(userSaved.getId()).get();
+            case "Intitution":
+                return institutions.findById(userSaved.getId()).get();
+            case "Suport":
+                return suports.findById(userSaved.getId()).get();
+        }
+        return null;
+    }
 
+    @GetMapping("/delete/{id}")
+    public boolean delete(@PathVariable Long id) {
+        if (users.existsById(id)) {
+            users.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

@@ -16,5 +16,4 @@ public class UniversityCoinsApplication {
 	public HibernateExceptionTranslator hibernateExceptionTranslator() {
 		return new HibernateExceptionTranslator();
 	}
-
 }

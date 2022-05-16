@@ -5,8 +5,9 @@ import java.util.ArrayList;
 import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.model.user.Teacher;
 import com.lab3.universitycoins.repository.StudentRepository;
-import com.lab3.universitycoins.repository.TeacherReposotory;
+import com.lab3.universitycoins.repository.TeacherRepository;
 import com.lab3.universitycoins.repository.TransitionRecorderRepository;
+import com.lab3.universitycoins.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,9 +20,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/teacher")
 public class TeacherController {
     @Autowired
+    UserRepository users;
+    @Autowired
     StudentRepository students;
     @Autowired
-    TeacherReposotory teachers;
+    TeacherRepository teachers;
     @Autowired
     TransitionRecorderRepository transistions;
 
@@ -32,11 +35,16 @@ public class TeacherController {
 
     @PostMapping
     public boolean insert(@RequestBody Teacher teacher) {
-        if (teachers.existsByCpf(teacher.getCpf()) || teachers.existsByEmail(teacher.getEmail()))
+        if (users.existsByCpf(teacher.getCpf()) || users.existsByEmail(teacher.getEmail()))
             return false;
         // String name, String email, String senha, String cpf
-        teachers.save(new Teacher(teacher.getName(), teacher.getEmail(), teacher.getSenha(), teacher.getCpf()));
+        teachers.save(teacher);
         return true;
+    }
+
+    @PostMapping("/update")
+    public void update(@RequestBody Teacher teacher) {
+        teachers.save(teacher);
     }
 
     @PostMapping("/deposit")

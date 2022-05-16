@@ -11,8 +11,12 @@ public abstract class NaturalPersonUser extends User {
 
     }
 
-    public NaturalPersonUser(String name, String email, String senha, String cpf) {
-        super(name, email, senha);
+    public NaturalPersonUser(String type) {
+        super(type);
+    }
+
+    public NaturalPersonUser(String name, String email, String senha, String cpf, String type) {
+        super(name, email, senha, type);
         this.cpf = cpf;
     }
 
