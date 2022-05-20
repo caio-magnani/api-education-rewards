@@ -4,21 +4,6 @@
 ### [Historia de Usuário](#historia-de-usuários-e-regras-de-negócio)
 ### [Seminário](./seminario/seminario.md/#seminário-net)
 ### [Diagramas](./docs/docs.md/#diagramas)
-- [Caso de Uso](./docs/docs.md/#diagrama-de-caso-de-uso)
-- [Implementação](./docs/docs.md/#diagrama-de-implementação)
-- [Componentes](./docs/docs.md/#diagrama-de-componentes)
-- [Classes](./docs/docs.md/#diagrama-de-classes)
-- [Mapeamento Modelo relacional](./docs/docs.md/#modelo-relacional)
-- [Sequência Sistema](./docs/docs.md/#diagramas-de-sequência-sistema)
-- [Sequência](./docs/docs.md/#diagramas-de-sequência)
-    - [Aluno](./docs/docs.md/#aluno)
-    - [Cliente](./docs/docs.md/#cliente)
-    - [Instituição](./docs/docs.md/#instituição)
-    - [Parceiro](./docs/docs.md/#parceiro)
-    - [Professor](./docs/docs.md/#professor)
-    - [Usuário](./docs/docs.md/#|Usuário)
-
-
 ---
 
 # Historia de Usuários e Regras de Negócio
