@@ -1,3 +1,4 @@
+[<< back](../README.md)
 # Diagramas
 
 - [Caso de Uso](#diagrama-de-caso-de-uso)
@@ -65,6 +66,12 @@ BankAccount(@id, Coins)
 ## Diagramas de Sequência Sistema
 ### CRUD Aluno
 ![CRUD Aluno](./img/Diagrama%20de%20Sequencia%20Sistema/Aluno/CRUD%20Aluno.png)
+#### [Back](./docs.md/#diagramas)
+### CRUD Parceiro
+![CRUD Parceiro](./img/Diagrama%20de%20Sequencia%20Sistema/Partner/CRUD%20Partner.png)
+#### [Back](./docs.md/#diagramas)
+### CRUD Oferta
+![CRUD Oferta](./img/Diagrama%20de%20Sequencia%20Sistema/Partner/CRUD%20Ofertas.png)
 #### [Back](./docs.md/#diagramas)
 
 ---
