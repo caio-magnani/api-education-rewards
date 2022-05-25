@@ -1,7 +1,5 @@
 package com.lab3.universitycoins.controller;
 
-import javax.servlet.http.Part;
-
 import com.lab3.universitycoins.model.user.Partner;
 import com.lab3.universitycoins.repository.PartnerRepository;
 import com.lab3.universitycoins.repository.UserRepository;

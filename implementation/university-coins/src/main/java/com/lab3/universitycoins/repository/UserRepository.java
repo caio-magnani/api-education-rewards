@@ -8,13 +8,18 @@ import org.springframework.data.repository.query.Param;
 
 public interface UserRepository extends CrudRepository<User, Long> {
 
-    @Query(value = "select case when count(U.id)> 0 then true else false end FROM USER AS U JOIN TEACHER AS T JOIN STUDENT AS S WHERE t.cpf like '%cpf%' or s.cpf like '%cpf%'", nativeQuery = true)
-    boolean existsByCpf(String cpf);
+    public default boolean existsByCpf(String cpf, StudentRepository students, TeacherRepository teachers) {
+        return students.existsByCpf(cpf) || teachers.existsByCpf(cpf);
+    }
+
+    public default boolean existsByCnpj(String cnpj, PartnerRepository partners, InstitutionRepository institutions) {
+        return partners.existsByCnpj(cnpj) || institutions.existsByCnpj(cnpj);
+    }
 
     boolean existsByEmail(String email);
 
     User findByEmail(String email);
 
-    @Query(value = "SELECT TYPE FROM users WHERE email = '%email%'", nativeQuery = true)
-    String userTypeByEmail(@Param("email") String email);
+    @Query(value = "SELECT TYPE FROM user WHERE email = '%email%'", nativeQuery = true)
+    abstract String userTypeByEmail(@Param("email") String email);
 }

@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
-    @Query(value = "SELECT * FROM users WHERE USER_TYPE = 'Student'", nativeQuery = true)
+    @Query(value = "SELECT * FROM user WHERE TYPE = 'Student'", nativeQuery = true)
     Iterable<Student> findAll();
 
-    Student findByEmail(String email);
+    boolean existsByCpf(String cpf);
 }

@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.repository.StudentRepository;
+import com.lab3.universitycoins.repository.TeacherRepository;
 import com.lab3.universitycoins.repository.UserRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -21,6 +21,8 @@ public class StudentController {
 
     @Autowired
     private StudentRepository students;
+    @Autowired
+    private TeacherRepository teachers;
     @Autowired
     private UserRepository users;
 
@@ -37,7 +39,9 @@ public class StudentController {
 
     @PostMapping
     public boolean insert(@RequestBody Student student) {
-        if (users.existsByCpf(student.getCpf()) || users.existsByEmail(student.getEmail()))
+        boolean exist = users.existsByCpf(student.getCpf(), students, teachers)
+                || users.existsByEmail(student.getEmail());
+        if (exist)
             return false;
         students.save(student);
         return true;

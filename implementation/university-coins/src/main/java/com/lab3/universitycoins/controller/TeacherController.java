@@ -35,9 +35,10 @@ public class TeacherController {
 
     @PostMapping
     public boolean insert(@RequestBody Teacher teacher) {
-        if (users.existsByCpf(teacher.getCpf()) || users.existsByEmail(teacher.getEmail()))
+        boolean exist = users.existsByCpf(teacher.getCpf(), students, teachers)
+                || users.existsByEmail(teacher.getEmail());
+        if (exist)
             return false;
-        // String name, String email, String senha, String cpf
         teachers.save(teacher);
         return true;
     }

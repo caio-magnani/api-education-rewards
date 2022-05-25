@@ -1,6 +1,8 @@
 package com.lab3.universitycoins.controller;
 
+import com.lab3.universitycoins.model.user.Partner;
 import com.lab3.universitycoins.model.user.Suport;
+import com.lab3.universitycoins.repository.PartnerRepository;
 import com.lab3.universitycoins.repository.SuportRepository;
 import com.lab3.universitycoins.repository.UserRepository;
 
@@ -20,12 +22,24 @@ public class SuportController {
     @Autowired
     SuportRepository suports;
 
+    @Autowired
+    PartnerRepository partners;
+
     @PostMapping
     public boolean insert(@RequestBody Suport suport) {
         if (users.existsByEmail(suport.getEmail())) {
             return false;
         }
         suports.save(suport);
+        return true;
+    }
+
+    @PostMapping("/new-partner")
+    public boolean insert(@RequestBody Partner partner) {
+        if (users.existsByEmail(partner.getEmail())) {
+            return false;
+        }
+        partners.save(partner);
         return true;
     }
 }
