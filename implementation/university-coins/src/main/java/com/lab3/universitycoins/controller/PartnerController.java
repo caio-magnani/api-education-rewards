@@ -29,8 +29,15 @@ public class PartnerController {
         return true;
     }
 
-    @PostMapping("/update")
+    @PostMapping("/update-partner")
     public void update(@RequestBody Partner partner) {
         partners.save(partner);
     }
+    
+    @PostMapping("/delete-partner")
+    public void delete(@RequestBody Partner suport) {
+    	partners.delete(suport);
+    }
+    
+    
 }

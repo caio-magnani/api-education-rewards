@@ -2,6 +2,7 @@ package com.lab3.universitycoins.controller;
 
 import com.lab3.universitycoins.model.user.Institution;
 import com.lab3.universitycoins.model.user.Partner;
+import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.model.user.Suport;
 import com.lab3.universitycoins.model.user.Teacher;
 import com.lab3.universitycoins.repository.InstitutionRepository;
@@ -47,6 +48,36 @@ public class SuportController {
         }
         partners.save(partner);
         return true;
+    }
+    
+    @PostMapping("/update-suport")
+    public void update(@RequestBody Suport suport) {
+        suports.save(suport);
+    }
+    
+    @PostMapping("/update-partner")
+    public void update(@RequestBody Partner suport) {
+        partners.save(suport);
+    }
+    
+    @PostMapping("/update-institution")
+    public void update(@RequestBody Institution institution) {
+        institutions.save(institution);
+    }
+    
+    @PostMapping("/delete-suport")
+    public void delete(@RequestBody Suport suport) {
+    	suports.delete(suport);
+    }
+    
+    @PostMapping("/delete-partner")
+    public void delete(@RequestBody Partner suport) {
+    	partners.delete(suport);
+    }
+    
+    @PostMapping("/delete-institution")
+    public void delete(@RequestBody Institution institution) {
+    	institutions.delete(institution);
     }
     
     

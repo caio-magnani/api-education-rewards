@@ -43,11 +43,16 @@ public class TeacherController {
         return true;
     }
 
-    @PostMapping("/update")
+    @PostMapping("/update-teacher")
     public void update(@RequestBody Teacher teacher) {
         teachers.save(teacher);
     }
-
+    
+    @PostMapping("/delete-teacher")
+    public void delete(@RequestBody Teacher teacher) {
+    	teachers.delete(teacher);
+    }
+    
     @PostMapping("/deposit")
     public boolean deposit(@RequestBody Long from, @RequestBody Long to, @RequestBody float howMuch) {
         Teacher teacher = teachers.findById(from).get();
