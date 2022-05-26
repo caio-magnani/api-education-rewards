@@ -2,6 +2,7 @@ package com.lab3.universitycoins.repository;
 
 import com.lab3.universitycoins.model.user.Partner;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.data.jpa.repository.Query;
 
 public interface PartnerRepository extends CrudRepository<Partner, Long> {
@@ -10,4 +11,6 @@ public interface PartnerRepository extends CrudRepository<Partner, Long> {
     Iterable<Partner> findAll();
 
     boolean existsByCnpj(String cnpj);
+    
+     
 }
