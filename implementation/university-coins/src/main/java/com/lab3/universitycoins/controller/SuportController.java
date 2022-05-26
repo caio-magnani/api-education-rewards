@@ -1,7 +1,10 @@
 package com.lab3.universitycoins.controller;
 
+import com.lab3.universitycoins.model.user.Institution;
 import com.lab3.universitycoins.model.user.Partner;
 import com.lab3.universitycoins.model.user.Suport;
+import com.lab3.universitycoins.model.user.Teacher;
+import com.lab3.universitycoins.repository.InstitutionRepository;
 import com.lab3.universitycoins.repository.PartnerRepository;
 import com.lab3.universitycoins.repository.SuportRepository;
 import com.lab3.universitycoins.repository.UserRepository;
@@ -24,6 +27,9 @@ public class SuportController {
 
     @Autowired
     PartnerRepository partners;
+    
+    @Autowired
+    InstitutionRepository institutions;
 
     @PostMapping
     public boolean insert(@RequestBody Suport suport) {
@@ -40,6 +46,17 @@ public class SuportController {
             return false;
         }
         partners.save(partner);
+        return true;
+    }
+    
+    
+    @PostMapping("/new-instution")
+    public boolean insert(@RequestBody Institution institution) {
+        boolean exist = users.existsByCnpj(institution.getCnpj(), partners, institutions)
+                || users.existsByEmail(institution.getEmail());
+        if (exist)
+            return false;
+        institutions.save(institution);
         return true;
     }
 }
