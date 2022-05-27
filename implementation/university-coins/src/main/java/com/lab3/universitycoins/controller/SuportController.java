@@ -50,36 +50,6 @@ public class SuportController {
         return true;
     }
 
-    @PostMapping("/update-suport")
-    public void update(@RequestBody Suport suport) {
-        suports.save(suport);
-    }
-
-    @PostMapping("/update-partner")
-    public void update(@RequestBody Partner suport) {
-        partners.save(suport);
-    }
-
-    @PostMapping("/update-institution")
-    public void update(@RequestBody Institution institution) {
-        institutions.save(institution);
-    }
-
-    @PostMapping("/delete-suport")
-    public void delete(@RequestBody Suport suport) {
-        suports.delete(suport);
-    }
-
-    @PostMapping("/delete-partner")
-    public void delete(@RequestBody Partner suport) {
-        partners.delete(suport);
-    }
-
-    @PostMapping("/delete-institution")
-    public void delete(@RequestBody Institution institution) {
-        institutions.delete(institution);
-    }
-
     @PostMapping("/new-instution")
     public boolean insert(@RequestBody Institution institution) {
         boolean exist = users.existsByCnpj(institution.getCnpj(), partners, institutions)

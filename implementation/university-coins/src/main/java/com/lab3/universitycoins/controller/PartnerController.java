@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("partner")
+@RequestMapping("/partner")
 public class PartnerController {
 
     @Autowired
@@ -33,11 +33,10 @@ public class PartnerController {
     public void update(@RequestBody Partner partner) {
         partners.save(partner);
     }
-    
+
     @PostMapping("/delete-partner")
     public void delete(@RequestBody Partner suport) {
-    	partners.delete(suport);
+        partners.delete(suport);
     }
-    
-    
+
 }

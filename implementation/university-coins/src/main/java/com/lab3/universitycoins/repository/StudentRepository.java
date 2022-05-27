@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 public interface StudentRepository extends CrudRepository<Student, Long> {
-    @Query(value = "SELECT * FROM user WHERE TYPE = 'Student'", nativeQuery = true)
+    @Query(value = "SELECT * FROM USER U JOIN STUDENT S ON U.ID = S.ID_USER", nativeQuery = true)
     Iterable<Student> findAll();
 
     boolean existsByCpf(String cpf);

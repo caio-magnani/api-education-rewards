@@ -21,6 +21,8 @@ public class TransitionRecorder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private Long about;
+
     private Long userId1;
 
     private Long userId2;
@@ -32,10 +34,19 @@ public class TransitionRecorder {
     public TransitionRecorder() {
     }
 
-    public TransitionRecorder(User from, User to) {
+    public TransitionRecorder(User about, User from, User to) {
+        this.about = about.getId();
         this.userId1 = from.getId();
         this.userId2 = to.getId();
         this.date = Date.valueOf(LocalDate.now());
+    }
+
+    public Long getAbout() {
+        return about;
+    }
+
+    public void setAbout(Long about) {
+        this.about = about;
     }
 
     public Long getFrom() {
@@ -55,8 +66,8 @@ public class TransitionRecorder {
     }
 
     public void deposit(Teacher teacher, Student student, float howMuch, String motivation) {
-        this.transition = "You deposit " + howMuch + "coins to " + student.getName()
-                + "with a motivation : " + motivation;
+        this.transition = "You deposit " + howMuch + " coins to " + student.getName()
+                + " with a motivation : " + motivation;
     }
 
     public void recive(Teacher teacher, float howMuch) {
@@ -64,7 +75,7 @@ public class TransitionRecorder {
     }
 
     public void spend(Student student, float howMuch) {
-        this.transition = "You spend " + howMuch + "coins";
+        this.transition = "You spend " + howMuch + " coins";
     }
 
     public void recharge(Teacher teacher) {

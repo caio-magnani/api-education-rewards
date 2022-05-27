@@ -59,8 +59,12 @@ public class TeacherController {
     }
 
     @PostMapping("/deposit")
-    public boolean deposit(@RequestBody Long from, @RequestBody Long to, @RequestBody float howMuch,
-            @RequestBody String motivation) {
+    public boolean deposit(
+            @RequestBody String[] params) {
+        Long from = Long.parseLong(params[0]);
+        Long to = Long.parseLong(params[1]);
+        float howMuch = Float.parseFloat(params[2]);
+        String motivation = params[3];
         Teacher teacher = teachers.findById(from).get();
         Student student = students.findById(to).get();
         boolean hasSpend = teacher.bank.spend(howMuch);
@@ -68,9 +72,12 @@ public class TeacherController {
             student.bank.recive(howMuch);
             teachers.save(teacher);
             students.save(student);
-            TransitionRecorder t = new TransitionRecorder(teacher, student);
-            t.deposit(teacher, student, howMuch, motivation);
-            transistions.save(t);
+            TransitionRecorder teacherDeposit = new TransitionRecorder(teacher, teacher, student);
+            TransitionRecorder studentRecive = new TransitionRecorder(student, teacher, student);
+            teacherDeposit.deposit(teacher, student, howMuch, motivation);
+            studentRecive.recive(teacher, howMuch);
+            transistions.save(teacherDeposit);
+            transistions.save(studentRecive);
         }
         return hasSpend;
     }

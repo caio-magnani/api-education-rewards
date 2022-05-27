@@ -5,10 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
+import com.lab3.universitycoins.model.TransitionRecorder;
 import com.lab3.universitycoins.model.user.User;
 import com.lab3.universitycoins.repository.UserRepository;
 import com.lab3.universitycoins.repository.StudentRepository;
 import com.lab3.universitycoins.repository.TeacherRepository;
+import com.lab3.universitycoins.repository.TransitionRecorderRepository;
 import com.lab3.universitycoins.repository.InstitutionRepository;
 import com.lab3.universitycoins.repository.PartnerRepository;
 import com.lab3.universitycoins.repository.SuportRepository;
@@ -35,21 +37,13 @@ public class UserController {
     InstitutionRepository institutions;
     @Autowired
     SuportRepository suports;
+    @Autowired
+    TransitionRecorderRepository transitions;
 
     @GetMapping
     public ArrayList<User> getAllUsers() {
         return (ArrayList<User>) users.findAll();
 
-    }
-
-    @PostMapping("/update-user")
-    public void update(@RequestBody User user) {
-        users.save(user);
-    }
-
-    @PostMapping("/delete-user")
-    public void delete(@RequestBody User user) {
-        users.delete(user);
     }
 
     @PostMapping(value = "/login")
@@ -80,5 +74,10 @@ public class UserController {
             return true;
         }
         return false;
+    }
+
+    @GetMapping("/transitions/{id}")
+    public ArrayList<TransitionRecorder> getTransisitons(@PathVariable Long id) {
+        return (ArrayList<TransitionRecorder>) transitions.findAllByAbout(id);
     }
 }
