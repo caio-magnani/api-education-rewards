@@ -9,13 +9,11 @@ public class AccoontBankConverter implements
 
     @Override
     public Float convertToDatabaseColumn(AccontBank attribute) {
-        // TODO Auto-generated method stub
         return attribute.getCoins();
     }
 
     @Override
     public AccontBank convertToEntityAttribute(Float dbData) {
-        // TODO Auto-generated method stub
         return new AccontBank(dbData);
     }
 

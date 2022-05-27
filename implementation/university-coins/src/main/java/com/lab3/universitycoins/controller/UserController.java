@@ -5,8 +5,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 
-import com.lab3.universitycoins.model.user.Partner;
-import com.lab3.universitycoins.model.user.Student;
 import com.lab3.universitycoins.model.user.User;
 import com.lab3.universitycoins.repository.UserRepository;
 import com.lab3.universitycoins.repository.StudentRepository;
@@ -43,15 +41,15 @@ public class UserController {
         return (ArrayList<User>) users.findAll();
 
     }
-    
+
     @PostMapping("/update-user")
     public void update(@RequestBody User user) {
         users.save(user);
     }
-    
+
     @PostMapping("/delete-user")
     public void delete(@RequestBody User user) {
-    	users.delete(user);
+        users.delete(user);
     }
 
     @PostMapping(value = "/login")

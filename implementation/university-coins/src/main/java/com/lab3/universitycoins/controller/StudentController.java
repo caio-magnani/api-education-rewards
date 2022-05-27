@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.ArrayList;
 
 import com.lab3.universitycoins.model.user.Student;
-import com.lab3.universitycoins.model.user.Teacher;
 import com.lab3.universitycoins.repository.StudentRepository;
 import com.lab3.universitycoins.repository.TeacherRepository;
 import com.lab3.universitycoins.repository.UserRepository;
@@ -37,10 +36,10 @@ public class StudentController {
     public void update(@RequestBody Student student) {
         students.save(student);
     }
-    
+
     @PostMapping("/delete-student")
     public void delete(@RequestBody Student student) {
-    	students.delete(student);
+        students.delete(student);
     }
 
     @PostMapping
