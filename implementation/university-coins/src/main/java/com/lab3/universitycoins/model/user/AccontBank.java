@@ -17,7 +17,7 @@ public class AccontBank {
     }
 
     public boolean spend(Float howMuch) {
-        if (!hasCoins(howMuch))
+        if (!hasCoins(howMuch) || howMuch < 0)
             return false;
         this.coins -= howMuch;
         return true;

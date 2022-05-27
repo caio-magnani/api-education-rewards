@@ -54,8 +54,13 @@ public class TransitionRecorder {
         return transition;
     }
 
-    public void deposit(Teacher teacher, Student student, float howMuch) {
-        this.transition = "You deposit " + howMuch + "coins to " + student.getName();
+    public void deposit(Teacher teacher, Student student, float howMuch, String motivation) {
+        this.transition = "You deposit " + howMuch + "coins to " + student.getName()
+                + "with a motivation : " + motivation;
+    }
+
+    public void recive(Teacher teacher, float howMuch) {
+        this.transition = "You recive " + howMuch + " coins by " + teacher.getName();
     }
 
     public void spend(Student student, float howMuch) {
