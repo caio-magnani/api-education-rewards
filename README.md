@@ -10,7 +10,9 @@ Este projeto é um sistema de moedas para educação que permite a interação e
 
 ---
 
-# Historia de Usuários e Regras de Negócio
+## Regras de negocio
+
+As regras de negócio fundamentais para o correto funcionamento do sistema incluem a autenticação obrigatória em todos os processos de login, garantindo a segurança e proteção das informações dos usuários. Além disso, a adição automática de 1000 moedas ao saldo dos professores a cada semestre. Por fim, a regra que determina o envio de cupons gerados por parceiros aos alunos por e-mail visa assegurar a efetiva comunicação e utilização desses benefícios promocionais.
 
 ## Historia de Usuários
 - I1 -> Eu como Intituição gostaria de exportar .csv para cadastro de professores.
@@ -33,12 +35,7 @@ Este projeto é um sistema de moedas para educação que permite a interação e
 - Pa1 -> Eu como Parceiro gostaria de criar Oferta.
 - Pa2 -> Eu como Parceiro gostaria de verificar se um Cupom é válido.
 - Pa3 -> Eu como Parceiro gostaria tornar Cupom invalido.
-
-## [Diagramas](./docs/docs.md/#diagramas)
-
-## Regras de negocio
-- R1 -> Todo login deve ser autentificado.
-- R2 -> A cada semestre é adicionado 1000 moedas ao saldo dos professores. 
-- R3 -> Ao gerar o Cupom ele deve ser enviado ao aluno por email.
+  
+### [Diagramas](./docs/docs.md/#diagramas)
 
 #### [Back](#sumário)
