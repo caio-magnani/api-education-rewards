@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é um sistema de moedas para educação que permite a interação entre instituições educacionais, professores, alunos e parceiros comerciais. O objetivo do sistema é incentivar a participação e a colaboração entre os diferentes atores do ecossistema educacional. As moedas virtuais podem ser usadas para:
+Esta api é um sistema de moedas para educação que permite a interação entre instituições educacionais, professores, alunos e parceiros comerciais. O objetivo do sistema é incentivar a participação e a colaboração entre os diferentes atores do ecossistema educacional. As moedas virtuais podem ser usadas para:
 
 1. Recompensar os alunos
 2. Oferecer descontos para os alunos
