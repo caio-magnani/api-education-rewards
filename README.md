@@ -1,9 +1,6 @@
 # Education Rewards API
 
-## Sumário
-### [Historia de Usuário](#historia-de-usuários-e-regras-de-negócio)
-### [Seminário](./seminario/seminario.md/#seminário-net)
-### [Diagramas](./docs/docs.md/#diagramas)
+## [Diagramas](./docs/docs.md/#diagramas)
 ---
 
 # Historia de Usuários e Regras de Negócio
