@@ -1,4 +1,4 @@
-# Laboratorio-3
+# Education Rewards
 
 ## Sumário
 ### [Historia de Usuário](#historia-de-usuários-e-regras-de-negócio)
