@@ -1,4 +1,4 @@
-# Education Rewards
+# Education Rewards API
 
 ## Sumário
 ### [Historia de Usuário](#historia-de-usuários-e-regras-de-negócio)
