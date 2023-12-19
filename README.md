@@ -1,6 +1,13 @@
-# Education Rewards API
+# Education Rewards API - Sistema de moedas para educação
 
-## [Diagramas](./docs/docs.md/#diagramas)
+## Descrição
+
+Este projeto é um sistema de moedas para educação que permite a interação entre instituições educacionais, professores, alunos e parceiros comerciais. O objetivo do sistema é incentivar a participação e a colaboração entre os diferentes atores do ecossistema educacional. As moedas virtuais podem ser usadas para:
+
+1. Recompensar os alunos
+2. Oferecer descontos para os alunos
+3. Incentivar os parceiros comerciais a criar ofertas atraentes
+
 ---
 
 # Historia de Usuários e Regras de Negócio
@@ -26,6 +33,8 @@
 - Pa1 -> Eu como Parceiro gostaria de criar Oferta.
 - Pa2 -> Eu como Parceiro gostaria de verificar se um Cupom é válido.
 - Pa3 -> Eu como Parceiro gostaria tornar Cupom invalido.
+
+## [Diagramas](./docs/docs.md/#diagramas)
 
 ## Regras de negocio
 - R1 -> Todo login deve ser autentificado.
