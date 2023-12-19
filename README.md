@@ -8,7 +8,6 @@ Este projeto é um sistema de moedas para educação que permite a interação e
 2. Oferecer descontos para os alunos
 3. Incentivar os parceiros comerciais a criar ofertas atraentes
 
----
 
 ## Regras de negocio
 
